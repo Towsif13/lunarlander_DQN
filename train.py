@@ -79,13 +79,32 @@ def dqn(n_episodes=500, max_t=100, eps_start=1.0, eps_end=0.01, eps_decay=0.995)
 
 scores = dqn()
 
+scores_dqn_np = np.array(scores)
+np.savetxt("scores_dqn.txt", scores_dqn_np)
+
+# plot the scores
+def moving_average(a, n=100):
+    ret = np.cumsum(a, dtype=float)
+    ret[n:] = ret[n:] - ret[:-n]
+    return ret[n - 1:] / n
+
+
+scores_ma_dqn = moving_average(scores, n=100)
+
 # plot the scores
 fig = plt.figure()
 ax = fig.add_subplot(111)
-plt.plot(np.arange(len(scores)), scores)
-plt.ylabel('Score')
-plt.xlabel('Episode #')
+plt.plot(np.arange(len(scores_ma_dqn)), scores_ma_dqn)
+plt.ylabel('Scores')
+plt.xlabel('Episodes')
+plt.savefig('graph.png')
 plt.show()
+# fig = plt.figure()
+# ax = fig.add_subplot(111)
+# plt.plot(np.arange(len(scores)), scores)
+# plt.ylabel('Score')
+# plt.xlabel('Episode #')
+# plt.show()
 
 
 # load the weights from file
