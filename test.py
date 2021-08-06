@@ -29,6 +29,7 @@ for i in range(10):
         #env.render()
         state, reward, done, _ = env.step(action)
         if done:
+            print('Simulation done')
             break
 
 env.close()
