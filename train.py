@@ -31,7 +31,7 @@ agent = Agent(state_size=8, action_size=4, seed=0)
 # env.close()
 
 
-def dqn(n_episodes=1000, max_t=200, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
+def dqn(n_episodes=500, max_t=200, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
     """Deep Q-Learning.
 
     Params
