@@ -26,7 +26,7 @@ for i in range(10):
     state = env.reset()
     for j in range(200):
         action = agent.act(state)
-        env.render()
+        #env.render()
         state, reward, done, _ = env.step(action)
         if done:
             break
